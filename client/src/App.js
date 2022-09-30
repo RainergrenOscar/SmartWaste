@@ -1,6 +1,5 @@
-import React, { useState } from "react"
-
-import "./App.css"
+//Styles
+import "./styles/Reset.scss"
 
 function App() {
 	return <></>

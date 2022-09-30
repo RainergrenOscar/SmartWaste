@@ -1,0 +1,33 @@
+{
+	"name": "smartwaste",
+	"version": "1.0.0",
+	"description": "SmartWaste Application",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server/server.js",
+		"server": "nodemon server/server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/RainergrenOscar/SmartWaste.git"
+	},
+	"author": "Oscar Rainergren",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/RainergrenOscar/SmartWaste/issues"
+	},
+	"homepage": "https://github.com/RainergrenOscar/SmartWaste#readme",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"bcryptjs": "^2.4.3",
+		"colors": "^1.4.0",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.1",
+		"express-async-handler": "^1.2.0",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^6.6.2"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.20"
+	}
+}
