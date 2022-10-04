@@ -1,6 +1,3 @@
-//Styles
-import "./styles/Reset.scss"
-
 //Pages
 
 //Routing
@@ -10,13 +7,15 @@ import Signup from "./pages/signup/Signup"
 
 function App() {
 	return (
-		<Router>
-			{/* Navbar */}
-			<Routes>
-				<Route path='/signup' element={<Signup />} />
-				<Route path='/login' element={<Login />} />
-			</Routes>
-		</Router>
+		<>
+			<Router>
+				{/* Navbar */}
+				<Routes>
+					<Route path='/signup' element={<Signup />} />
+					<Route path='/login' element={<Login />} />
+				</Routes>
+			</Router>
+		</>
 	)
 }
 

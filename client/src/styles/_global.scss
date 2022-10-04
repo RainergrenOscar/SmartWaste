@@ -1,0 +1,23 @@
+@use "./variables" as var;
+
+body {
+	margin: 0%;
+	padding: 0%;
+	box-sizing: border-box;
+	background-color: var.$bg-color;
+}
+
+main {
+	height: 100vh;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
