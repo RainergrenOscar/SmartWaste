@@ -1,28 +1,50 @@
-//Pages
-
-//Routing
+//Routing / Pages
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
-import { useSelector } from "react-redux"
 import Landing from "./pages/Landing"
+import PrivateRoute from "./pages/PrivateRoute"
+import BottomNav from "./components/BottomNav"
+
+//Redux
+import { useSelector } from "react-redux"
+import CreateAd from "./pages/CreateAd"
+import Profile from "./pages/Profile"
 
 function App() {
 	const { user } = useSelector((state) => state.auth)
-
 	return (
 		<>
-			{user ? (
-				<div>
-					<img src={user.avatar} alt='' />
-				</div>
-			) : (
-				<div>EJ INLOGGAD</div>
-			)}
 			<Router>
 				{/* Navbar */}
+				{user ? <BottomNav /> : null}
+
 				<Routes>
-					<Route path='/' element={<Landing />} />
+					<Route
+						path='/'
+						element={
+							<PrivateRoute>
+								<Landing />
+							</PrivateRoute>
+						}
+					/>
+					<Route
+						path='/createad'
+						element={
+							<PrivateRoute>
+								<CreateAd />
+							</PrivateRoute>
+						}
+					/>
+					<Route
+						path='/profile'
+						element={
+							<PrivateRoute>
+								<Profile />
+							</PrivateRoute>
+						}
+					/>
+
 					<Route path='/signup' element={<Signup />} />
 					<Route path='/login' element={<Login />} />
 				</Routes>
