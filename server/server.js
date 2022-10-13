@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: false }))
 
 // Define Routes
 app.use("/api/users", require("./routes/userRoutes"))
+app.use("/api/ads", require("./routes/adRoutes"))
 
 // Port / Listener
 const PORT = process.env.PORT || 8000

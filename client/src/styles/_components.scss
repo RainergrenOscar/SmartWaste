@@ -1,2 +1,19 @@
 @use "./variables" as var;
 @use "./abstracts" as abs;
+
+//NAVBAR
+.navlinks {
+	display: flex;
+	.link {
+		text-decoration: none;
+		color: var.$black;
+		margin-left: 3rem;
+		&:hover {
+		}
+	}
+}
+
+.logo {
+	cursor: pointer;
+	color: var.$black;
+}

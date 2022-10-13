@@ -1,7 +1,8 @@
 import React from "react"
+import CardGrid from "../components/card/CardGrid"
 
 const Landing = () => {
-	return <div>test</div>
+	return <></>
 }
 
 export default Landing
