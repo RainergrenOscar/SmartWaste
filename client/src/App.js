@@ -21,43 +21,36 @@ function App() {
 	return (
 		<>
 			{user ? <Nav /> : null}
-			<Header
-				button='true'
-				icon={<ArrowBackIosNewIcon fontSize='small' />}
-				pageName='Annonser'
-			/>
 
-			<Container maxWidth='lg'>
-				<Routes>
-					<Route
-						path='/'
-						element={
-							<PrivateRoute>
-								<Landing />
-							</PrivateRoute>
-						}
-					/>
-					<Route
-						path='/createad'
-						element={
-							<PrivateRoute>
-								<CreateAd />
-							</PrivateRoute>
-						}
-					/>
-					<Route
-						path='/profile'
-						element={
-							<PrivateRoute>
-								<Profile />
-							</PrivateRoute>
-						}
-					/>
+			<Routes>
+				<Route
+					path='/'
+					element={
+						<PrivateRoute>
+							<Landing />
+						</PrivateRoute>
+					}
+				/>
+				<Route
+					path='/createad'
+					element={
+						<PrivateRoute>
+							<CreateAd />
+						</PrivateRoute>
+					}
+				/>
+				<Route
+					path='/profile'
+					element={
+						<PrivateRoute>
+							<Profile />
+						</PrivateRoute>
+					}
+				/>
 
-					<Route path='/signup' element={<Signup />} />
-					<Route path='/login' element={<Login />} />
-				</Routes>
-			</Container>
+				<Route path='/signup' element={<Signup />} />
+				<Route path='/login' element={<Login />} />
+			</Routes>
 		</>
 	)
 }

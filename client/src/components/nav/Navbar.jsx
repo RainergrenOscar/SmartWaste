@@ -34,17 +34,13 @@ const Navbar = () => {
 					</Typography>
 					<div className='navlinks'>
 						<Link to='/' className='link'>
-							Home
+							Annonser
 						</Link>
-
-						<Link to='/about' className='link'>
-							About
+						<Link to='/createad' className='link'>
+							Ny annons
 						</Link>
-						<Link to='/contact' className='link'>
-							Contact
-						</Link>
-						<Link to='/faq' className='link'>
-							FAQ
+						<Link to='/profile' className='link'>
+							Min profil
 						</Link>
 					</div>
 				</Toolbar>

@@ -24,8 +24,17 @@ const getAds = asyncHandler(async (req, res) => {
 // @route POST /api/ads
 // @access private
 const createAd = asyncHandler(async (req, res) => {
-	const { title, ingredients, allergens, category, link, desc, price, date } =
-		req.body
+	const {
+		title,
+		ingredients,
+		allergens,
+		category,
+		link,
+		desc,
+		price,
+		date,
+		img,
+	} = req.body
 	const user = await User.findById(req.user.id)
 
 	if (
@@ -35,7 +44,8 @@ const createAd = asyncHandler(async (req, res) => {
 		!category ||
 		!link ||
 		!desc ||
-		!price
+		!price ||
+		!img
 	) {
 		res.status(400)
 		throw new Error("All fields must be filled")
@@ -55,6 +65,7 @@ const createAd = asyncHandler(async (req, res) => {
 		price,
 		user,
 		date,
+		img,
 	})
 
 	res.status(201).json(newAd)

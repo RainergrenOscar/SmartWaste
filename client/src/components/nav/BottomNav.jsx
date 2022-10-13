@@ -52,7 +52,7 @@ const BottomNav = () => {
 						component={Link}
 						to='/createad'
 						label='Ny annons'
-						value='test'
+						value='createad'
 						icon={<ControlPointIcon />}
 					/>
 					<BottomNavigationAction

@@ -6,7 +6,7 @@ const Header = ({ pageName, icon, button }) => {
 	return (
 		<Box
 			sx={{
-				boxShadow: 4,
+				boxShadow: 3,
 				position: "static",
 				marginBottom: "2rem",
 				top: 0,
@@ -30,9 +30,6 @@ const Header = ({ pageName, icon, button }) => {
 					paddingRight: "1rem",
 				}}
 			>
-				{/* <IconButton aria-label='back' size='small'>
-					<ArrowBackIosNewIcon fontSize='small' />
-				</IconButton> */}
 				{button ? (
 					<Box display={"flex"}>
 						<IconButton size='small'>{icon}</IconButton>
