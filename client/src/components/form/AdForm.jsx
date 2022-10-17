@@ -14,6 +14,7 @@ import {
 	IconButton,
 	ListSubheader,
 	SvgIcon,
+	Card,
 } from "@mui/material"
 import DeleteIcon from "@mui/icons-material/Delete"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
@@ -27,6 +28,7 @@ import { useSelector } from "react-redux"
 //EXTRA NPMS
 import { v4 } from "uuid"
 import dayjs from "dayjs"
+import { Box } from "@mui/system"
 
 const AdForm = () => {
 	//Redux
@@ -37,12 +39,11 @@ const AdForm = () => {
 	//Select state
 	const [category, setCategory] = useState("Kött")
 	//Date state
-	const [date, setDate] = useState(dayjs("2022/12/12"))
+	const [date, setDate] = useState("2022/10/22")
 	//Form values
 	const [values, setValues] = useState({
 		title: "",
 		allergerns: "",
-		category: "",
 		link: "",
 		desc: "",
 		img: "",
@@ -70,7 +71,29 @@ const AdForm = () => {
 	}
 
 	// Handle image upload
-	const onFileChange = (e) => {}
+	const onFileChange = (e) => {
+		let file = e.target.files[0]
+		if (file.size > 55000) {
+			alert("Bilden är för stor")
+			setValues((prev) => ({ ...prev, picDone: false, pic: "" }))
+			return
+		} else {
+			setValues((prev) => ({ ...prev, picDone: true }))
+			const reader = new FileReader()
+			setValues((prev) => ({ ...prev, img: file }))
+			reader.addEventListener(
+				"load",
+				() => {
+					setValues((prev) => ({ ...prev, img: reader.result }))
+				},
+				false
+			)
+
+			if (file) {
+				reader.readAsDataURL(file)
+			}
+		}
+	}
 
 	// Handle date
 	const handleDate = (newValue) => {
@@ -104,8 +127,38 @@ const AdForm = () => {
 		}
 	}
 
+	//Validation
+	const submitForm = () => {
+		const newObj = {
+			title: values.title,
+			ingredients: ingr,
+			allergens: values.allergerns,
+			category: category,
+			link: values.link,
+			desc: values.desc,
+			price: values.price,
+			date: date,
+			name: user.name,
+			email: user.email,
+			img: values.img,
+		}
+		if (
+			values.title === "" ||
+			ingr === "" ||
+			values.allergerns === "" ||
+			category === "" ||
+			values.link === "" ||
+			values.desc === "" ||
+			values.price === "" ||
+			values.img === ""
+		) {
+			alert("Vänligen fyll i alla fält")
+		} else {
+			console.log(newObj)
+		}
+	}
+
 	//Submit form
-	const submitForm = () => {}
 
 	return (
 		<form>
@@ -262,7 +315,19 @@ const AdForm = () => {
 							onChange={(e) => onFileChange(e)}
 						/>
 					</Button>
-					<img src='' alt='' />
+				</Grid>
+				<Grid item xs={6} md={12}>
+					<Box
+						sx={{
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							p: 2,
+							border: "1px dashed grey",
+						}}
+					>
+						<img src={values.img} alt='' />
+					</Box>
 				</Grid>
 
 				{/* PRIS */}
@@ -341,6 +406,7 @@ const AdForm = () => {
 					sx={{ display: "flex", justifyContent: "center" }}
 				>
 					<Button
+						onClick={submitForm}
 						fullWidth
 						variant='contained'
 						sx={{
