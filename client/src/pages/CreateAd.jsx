@@ -1,7 +1,7 @@
 import React from "react"
 import AdForm from "../components/form/AdForm"
 import Header from "../components/Header"
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew"
+import logo from "../resources/Largelogo.svg"
 import { Container } from "@mui/material"
 
 const CreateAd = () => {
