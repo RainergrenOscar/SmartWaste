@@ -6,8 +6,8 @@ const url = "/api/ads"
 /**
  * Create new ad
  * @async
- * @param
- * @returns
+ * @param {adData, token}
+ * @returns a new object
  */
 
 const createAd = async (adData, token) => {
