@@ -20,19 +20,25 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 import { DatePicker } from "@mui/x-date-pickers/DatePicker"
+import UploadIcon from "@mui/icons-material/Upload"
+import { Box } from "@mui/system"
 
 //REACT & REDUX
 import React, { useState } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { createAd } from "../../redux/ad/AdSlice"
 
 //EXTRA NPMS
 import { v4 } from "uuid"
 import dayjs from "dayjs"
-import { Box } from "@mui/system"
 
 const AdForm = () => {
 	//Redux
 	const { user } = useSelector((state) => state.auth)
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
+
 	//Ingredients state
 	const [ingr, setIngr] = useState([])
 	const [name, setName] = useState("")
@@ -73,7 +79,7 @@ const AdForm = () => {
 	// Handle image upload
 	const onFileChange = (e) => {
 		let file = e.target.files[0]
-		if (file.size > 55000) {
+		if (file.size > 80000) {
 			alert("Bilden är för stor")
 			setValues((prev) => ({ ...prev, picDone: false, pic: "" }))
 			return
@@ -153,8 +159,10 @@ const AdForm = () => {
 			values.img === ""
 		) {
 			alert("Vänligen fyll i alla fält")
+			return
 		} else {
-			console.log(newObj)
+			dispatch(createAd(newObj))
+			navigate("/")
 		}
 	}
 
@@ -305,7 +313,11 @@ const AdForm = () => {
 
 				{/* LADDA UP BILD */}
 				<Grid item xs={12} md={12}>
-					<Button variant='contained' component='label'>
+					<Button
+						variant='contained'
+						component='label'
+						endIcon={<UploadIcon />}
+					>
 						Ladda upp fil
 						<input
 							hidden
@@ -316,7 +328,7 @@ const AdForm = () => {
 						/>
 					</Button>
 				</Grid>
-				<Grid item xs={6} md={12}>
+				<Grid item xs={12} md={12}>
 					<Box
 						sx={{
 							display: "flex",
@@ -326,7 +338,7 @@ const AdForm = () => {
 							border: "1px dashed grey",
 						}}
 					>
-						<img src={values.img} alt='' />
+						<img src={values.img} width='200px' />
 					</Box>
 				</Grid>
 
