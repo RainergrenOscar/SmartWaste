@@ -22,16 +22,20 @@ const Navbar = () => {
 			<CssBaseline />
 			<Container maxWidth='lg'>
 				<Toolbar>
-					<Typography
-						variant='h4'
-						className='logo'
-						sx={{
-							letterSpacing: "-1.9px",
-							fontWeight: "bold",
-						}}
-					>
-						SmartWaste
-					</Typography>
+					<div className='navlinks'>
+						<Link to='/' className='link'>
+							<Typography
+								variant='h4'
+								className='logo'
+								sx={{
+									letterSpacing: "-1.9px",
+									fontWeight: "bold",
+								}}
+							>
+								SmartWaste
+							</Typography>
+						</Link>
+					</div>
 					<div className='navlinks'>
 						<Link to='/' className='link'>
 							Annonser
