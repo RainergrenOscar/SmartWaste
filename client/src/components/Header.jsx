@@ -1,8 +1,16 @@
-import { Box, Button, Container, IconButton, Typography } from "@mui/material"
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew"
+import {
+	Box,
+	Container,
+	IconButton,
+	Input,
+	InputAdornment,
+	TextField,
+	Typography,
+} from "@mui/material"
+import SearchIcon from "@mui/icons-material/Search"
 import React from "react"
 
-const Header = ({ pageName, icon, button }) => {
+const Header = ({ pageName, icon, button, searchBar, searchHandler }) => {
 	return (
 		<Box
 			sx={{
@@ -30,6 +38,26 @@ const Header = ({ pageName, icon, button }) => {
 					paddingRight: "1rem",
 				}}
 			>
+				{searchBar ? (
+					<TextField
+						className='inputRounded'
+						placeholder='Search'
+						variant='outlined'
+						size='small'
+						onChange={searchHandler}
+						fullWidth
+						sx={{
+							"& fieldset": { border: "none" },
+						}}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position='start'>
+									<SearchIcon />
+								</InputAdornment>
+							),
+						}}
+					/>
+				) : null}
 				{button ? (
 					<Box display={"flex"}>
 						<IconButton size='small'>{icon}</IconButton>

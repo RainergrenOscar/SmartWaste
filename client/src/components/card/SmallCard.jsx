@@ -1,4 +1,6 @@
-import React from "react"
+/* IMPORTS */
+
+//MUI
 import Card from "@mui/material/Card"
 import CardContent from "@mui/material/CardContent"
 import CardMedia from "@mui/material/CardMedia"
@@ -6,15 +8,26 @@ import LocationOnIcon from "@mui/icons-material/LocationOn"
 import Typography from "@mui/material/Typography"
 import { CardActionArea, Divider } from "@mui/material"
 
-const SmallCard = ({}) => {
+//redux
+import { getAds } from "../../redux/ad/AdSlice"
+import { useSelector, useDispatch } from "react-redux"
+import { useEffect } from "react"
+
+const SmallCard = ({ img, title, portions, price, location }) => {
 	return (
-		<Card sx={{ width: 164, height: 220 }}>
+		<Card
+			sx={{
+				width: 164,
+				height: 220,
+				display: { xs: "block", sm: "block", md: "none", lg: "none" },
+			}}
+		>
 			{/* Make props */}
 			<CardActionArea href='/'>
 				<CardMedia
 					component='img'
 					height='95'
-					image='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'
+					image={img}
 					alt='green iguana'
 				/>
 				<CardContent>
@@ -28,13 +41,13 @@ const SmallCard = ({}) => {
 							letterSpacing: -0.8,
 						}}
 					>
-						Test
+						{title.substring(0, 16)}...
 					</Typography>
 					<Typography variant='body2' color='text.secondary'>
-						4 Portioner
+						{`${portions} portioner`}
 					</Typography>
 					<Typography variant='body2' color='black'>
-						160kr
+						{`${price} kr`}
 					</Typography>
 					<Divider sx={{ marginTop: 1 }} />
 					<div
@@ -48,7 +61,7 @@ const SmallCard = ({}) => {
 							sx={{ color: "GrayText", marginRight: 0.2 }}
 						/>
 						<Typography fontSize='12px' color='GrayText'>
-							Västerhaninge
+							{location}
 						</Typography>
 					</div>
 				</CardContent>

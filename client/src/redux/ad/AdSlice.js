@@ -10,8 +10,9 @@ const initialState = {
 	message: "",
 }
 
+//Create ads
 export const createAd = createAsyncThunk(
-	"ad/create",
+	"ads/create",
 	async (adData, thunkAPI) => {
 		try {
 			const token = thunkAPI.getState().auth.user.token
@@ -29,6 +30,24 @@ export const createAd = createAsyncThunk(
 	}
 )
 
+//Fetch all ads
+export const getAds = createAsyncThunk("ads/getAds", async (_, thunkAPI) => {
+	try {
+		const token = thunkAPI.getState().auth.user.token
+		return await adService.getAds(token)
+	} catch (error) {
+		// set the message to the backend server message
+		const message =
+			(error.response &&
+				error.response.data &&
+				error.response.data.message) ||
+			error.message ||
+			error.toString()
+		//return with the message
+		return thunkAPI.rejectWithValue(message)
+	}
+})
+
 export const adSlice = createSlice({
 	name: "ad",
 	initialState,
@@ -43,6 +62,19 @@ export const adSlice = createSlice({
 				state.isSuccess = true
 			})
 			.addCase(createAd.rejected, (state, action) => {
+				state.isLoading = false
+				state.isError = true
+				state.message = action.payload
+			})
+			.addCase(getAds.pending, (state) => {
+				state.isLoading = true
+			})
+			.addCase(getAds.fulfilled, (state, action) => {
+				state.isLoading = false
+				state.isSuccess = true
+				state.ads = action.payload
+			})
+			.addCase(getAds.rejected, (state, action) => {
 				state.isLoading = false
 				state.isError = true
 				state.message = action.payload

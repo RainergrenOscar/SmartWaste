@@ -7,10 +7,10 @@ const url = "/api/ads"
  * Create new ad
  * @async
  * @param {adData, token}
- * @returns a new object
+ * @returns a new object with userData
  */
-
 const createAd = async (adData, token) => {
+	//Verify that user is logged in
 	const config = {
 		headers: {
 			Authorization: `Bearer ${token}`,
@@ -21,9 +21,27 @@ const createAd = async (adData, token) => {
 	return res.data
 }
 
+/**
+ * Get ads
+ * @async
+ * @param {token}
+ * @returns all ads created
+ */
+const getAds = async (token) => {
+	const config = {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	}
+	const response = await axios.get(url, config)
+
+	return response.data
+}
+
 //Exports
 const adService = {
 	createAd,
+	getAds,
 }
 
 export default adService

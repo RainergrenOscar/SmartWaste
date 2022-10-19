@@ -17,3 +17,8 @@
 	cursor: pointer;
 	color: var.$black;
 }
+
+.inputRounded .MuiOutlinedInput-root {
+	border-radius: 50px;
+	background-color: var.$light-grey;
+}

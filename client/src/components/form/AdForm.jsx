@@ -22,6 +22,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 import { DatePicker } from "@mui/x-date-pickers/DatePicker"
 import UploadIcon from "@mui/icons-material/Upload"
 import { Box } from "@mui/system"
+import LocationOnIcon from "@mui/icons-material/LocationOn"
 
 //REACT & REDUX
 import React, { useState } from "react"
@@ -57,6 +58,8 @@ const AdForm = () => {
 		date: "",
 		name: "",
 		email: "",
+		location: "",
+		portions: "",
 	})
 
 	//Add ingredients to Array
@@ -79,7 +82,7 @@ const AdForm = () => {
 	// Handle image upload
 	const onFileChange = (e) => {
 		let file = e.target.files[0]
-		if (file.size > 80000) {
+		if (file.size > 100000) {
 			alert("Bilden är för stor")
 			setValues((prev) => ({ ...prev, picDone: false, pic: "" }))
 			return
@@ -130,6 +133,13 @@ const AdForm = () => {
 				const price = parseInt(e.target.value)
 				setValues((prev) => ({ ...prev, price: price }))
 				break
+			case "portions":
+				const portions = parseInt(e.target.value)
+				setValues((prev) => ({ ...prev, portions: portions }))
+				break
+			case "location":
+				setValues((prev) => ({ ...prev, location: e.target.value }))
+				break
 		}
 	}
 
@@ -147,6 +157,8 @@ const AdForm = () => {
 			name: user.name,
 			email: user.email,
 			img: values.img,
+			portions: values.portions,
+			location: values.location,
 		}
 		if (
 			values.title === "" ||
@@ -156,7 +168,9 @@ const AdForm = () => {
 			values.link === "" ||
 			values.desc === "" ||
 			values.price === "" ||
-			values.img === ""
+			values.img === "" ||
+			values.location === "" ||
+			values.portions === ""
 		) {
 			alert("Vänligen fyll i alla fält")
 			return
@@ -188,7 +202,7 @@ const AdForm = () => {
 				</Grid>
 
 				{/* LÄGG TILL INGREDIENSER */}
-				<Grid item xs={9} md={9}>
+				<Grid item xs={8} sm={9} md={10}>
 					<TextField
 						label='Ingredienser'
 						fullWidth
@@ -201,9 +215,9 @@ const AdForm = () => {
 						}}
 					/>
 				</Grid>
-				<Grid item xs={3} md={3} sx={{ display: "flex" }}>
+				<Grid item xs={4} sm={3} md={2} sx={{ display: "flex" }}>
 					<Button variant='contained' fullWidth onClick={addToArray}>
-						+
+						Lägg till
 					</Button>
 				</Grid>
 
@@ -355,6 +369,42 @@ const AdForm = () => {
 							startAdornment: (
 								<InputAdornment position='start'>
 									SEK
+								</InputAdornment>
+							),
+						}}
+					/>
+				</Grid>
+
+				{/* PORTIONER */}
+				<Grid item xs={12} md={6}>
+					<TextField
+						id='portions'
+						value={values.portions}
+						onChange={(e) => onChange(e)}
+						label='Portioner'
+						type='number'
+						fullWidth
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position='start'></InputAdornment>
+							),
+						}}
+					/>
+				</Grid>
+
+				{/* PLATS */}
+				<Grid item xs={12} md={6}>
+					<TextField
+						id='location'
+						value={values.location}
+						onChange={(e) => onChange(e)}
+						label='Plats'
+						type='text'
+						fullWidth
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position='start'>
+									<LocationOnIcon />
 								</InputAdornment>
 							),
 						}}
