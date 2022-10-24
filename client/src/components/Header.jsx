@@ -15,10 +15,10 @@ const Header = ({ pageName, icon, button, searchBar, searchHandler }) => {
 		<Box
 			sx={{
 				boxShadow: 3,
-				position: "static",
-				marginBottom: "2rem",
+				position: "fixed",
+				zIndex: "9999",
 				top: 0,
-				height: "3rem",
+				height: "4rem",
 				left: 0,
 				right: 0,
 				backgroundColor: "white",

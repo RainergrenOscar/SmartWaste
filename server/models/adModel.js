@@ -16,18 +16,16 @@ const adSchema = new mongoose.Schema({
 			required: true,
 		},
 	],
-	location: [
-		{
-			type: String,
-			required: true,
-		},
-	],
-	portions: [
-		{
-			type: String,
-			required: true,
-		},
-	],
+	location: {
+		type: String,
+		required: true,
+	},
+
+	portions: {
+		type: Number,
+		required: true,
+	},
+
 	allergens: [
 		{
 			type: String,

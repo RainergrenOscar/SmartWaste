@@ -1,18 +1,21 @@
-import { Container } from "@mui/material"
-import React from "react"
+import { Box, Container, Grid } from "@mui/material"
+import React, { useState } from "react"
 import CardGrid from "../components/card/CardGrid"
-import Category from "../components/card/Category"
-import SmallCard from "../components/card/SmallCard"
+
 import Header from "../components/Header"
 
 const Landing = () => {
 	return (
 		<>
-			<Header searchBar='true' />
-			<Container>
-				<Category />
+			<Header pageName='Annonser' />
+			<Box
+				sx={{
+					marginTop: { xs: "4rem", md: "2rem" },
+					marginBottom: "6rem",
+				}}
+			>
 				<CardGrid />
-			</Container>
+			</Box>
 		</>
 	)
 }

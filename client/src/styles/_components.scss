@@ -18,7 +18,31 @@
 	color: var.$black;
 }
 
+//test
 .inputRounded .MuiOutlinedInput-root {
 	border-radius: 50px;
 	background-color: var.$light-grey;
+}
+.auto-grid {
+	--auto-grid-min-size: 10rem;
+
+	display: grid;
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(var(--auto-grid-min-size), 1fr)
+	);
+	grid-gap: 1rem;
+}
+
+.scroll-wrap {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	.card {
+		display: inline-block;
+	}
 }

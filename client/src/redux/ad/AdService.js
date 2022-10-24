@@ -34,7 +34,24 @@ const getAds = async (token) => {
 		},
 	}
 	const response = await axios.get(url, config)
+	console.log(response.data)
+	return response.data
+}
 
+/**
+ * Get ads by ID
+ * @async
+ * @param {token, id}
+ * @returns Find ad by id
+ */
+const getSpecificAd = async (adId, token) => {
+	const config = {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	}
+	const response = await axios.get(url + "/" + adId, config)
+	console.log(response.data)
 	return response.data
 }
 
@@ -42,6 +59,7 @@ const getAds = async (token) => {
 const adService = {
 	createAd,
 	getAds,
+	getSpecificAd,
 }
 
 export default adService

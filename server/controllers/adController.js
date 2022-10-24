@@ -34,6 +34,8 @@ const createAd = asyncHandler(async (req, res) => {
 		price,
 		date,
 		img,
+		location,
+		portions,
 	} = req.body
 	const user = await User.findById(req.user.id)
 
@@ -45,7 +47,9 @@ const createAd = asyncHandler(async (req, res) => {
 		!link ||
 		!desc ||
 		!price ||
-		!img
+		!img ||
+		!portions ||
+		!location
 	) {
 		res.status(400)
 		throw new Error("All fields must be filled")
@@ -66,6 +70,8 @@ const createAd = asyncHandler(async (req, res) => {
 		user,
 		date,
 		img,
+		location,
+		portions,
 	})
 
 	res.status(201).json(newAd)
@@ -87,7 +93,6 @@ const getAdById = asyncHandler(async (req, res) => {
 		res.status(404)
 		throw new Error("Cant find specific ad")
 	}
-
 	res.status(200).json(result)
 })
 

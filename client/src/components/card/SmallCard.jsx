@@ -8,22 +8,16 @@ import LocationOnIcon from "@mui/icons-material/LocationOn"
 import Typography from "@mui/material/Typography"
 import { CardActionArea, Divider } from "@mui/material"
 
-//redux
-import { getAds } from "../../redux/ad/AdSlice"
-import { useSelector, useDispatch } from "react-redux"
-import { useEffect } from "react"
-
-const SmallCard = ({ img, title, portions, price, location }) => {
+// DONT USE THIS FOR NOW
+const SmallCard = ({ img, title, portions, price, location, id }) => {
 	return (
 		<Card
 			sx={{
-				width: 164,
-				height: 220,
 				display: { xs: "block", sm: "block", md: "none", lg: "none" },
 			}}
 		>
 			{/* Make props */}
-			<CardActionArea href='/'>
+			<CardActionArea>
 				<CardMedia
 					component='img'
 					height='95'
@@ -41,13 +35,19 @@ const SmallCard = ({ img, title, portions, price, location }) => {
 							letterSpacing: -0.8,
 						}}
 					>
-						{title.substring(0, 16)}...
+						{title.substring(0, 15)}...
 					</Typography>
 					<Typography variant='body2' color='text.secondary'>
-						{`${portions} portioner`}
+						{`${portions} Portioner`}
 					</Typography>
-					<Typography variant='body2' color='black'>
-						{`${price} kr`}
+					<Typography
+						variant='body2'
+						color='black'
+						sx={{
+							fontWeight: 500,
+						}}
+					>
+						{`${price} Kr`}
 					</Typography>
 					<Divider sx={{ marginTop: 1 }} />
 					<div

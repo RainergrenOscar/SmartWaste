@@ -1,5 +1,10 @@
 //Routing & Pages
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	useParams,
+} from "react-router-dom"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Landing from "./pages/Landing"
@@ -14,6 +19,7 @@ import { Container } from "@mui/material"
 import Header from "./components/Header"
 
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew"
+import Ad from "./pages/Ad"
 
 function App() {
 	const { user } = useSelector((state) => state.auth)
@@ -36,6 +42,14 @@ function App() {
 					element={
 						<PrivateRoute>
 							<CreateAd />
+						</PrivateRoute>
+					}
+				/>
+				<Route
+					path='/ad/:adId'
+					element={
+						<PrivateRoute>
+							<Ad />
 						</PrivateRoute>
 					}
 				/>

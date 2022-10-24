@@ -8,7 +8,7 @@ const CreateAd = () => {
 	return (
 		<>
 			<Header pageName='Ny annons' />
-			<Container>
+			<Container sx={{ marginTop: { xs: "6rem", md: "2rem" } }}>
 				<AdForm />
 			</Container>
 		</>

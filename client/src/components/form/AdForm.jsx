@@ -13,8 +13,6 @@ import {
 	Paper,
 	IconButton,
 	ListSubheader,
-	SvgIcon,
-	Card,
 } from "@mui/material"
 import DeleteIcon from "@mui/icons-material/Delete"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
@@ -32,7 +30,6 @@ import { createAd } from "../../redux/ad/AdSlice"
 
 //EXTRA NPMS
 import { v4 } from "uuid"
-import dayjs from "dayjs"
 
 const AdForm = () => {
 	//Redux
@@ -216,7 +213,12 @@ const AdForm = () => {
 					/>
 				</Grid>
 				<Grid item xs={4} sm={3} md={2} sx={{ display: "flex" }}>
-					<Button variant='contained' fullWidth onClick={addToArray}>
+					<Button
+						variant='contained'
+						fullWidth
+						onClick={addToArray}
+						disableElevation
+					>
 						Lägg till
 					</Button>
 				</Grid>
@@ -328,6 +330,7 @@ const AdForm = () => {
 				{/* LADDA UP BILD */}
 				<Grid item xs={12} md={12}>
 					<Button
+						disableElevation
 						variant='contained'
 						component='label'
 						endIcon={<UploadIcon />}
@@ -352,7 +355,7 @@ const AdForm = () => {
 							border: "1px dashed grey",
 						}}
 					>
-						<img src={values.img} width='200px' />
+						<img src={values.img} width='200px' alt={values.img} />
 					</Box>
 				</Grid>
 
@@ -468,8 +471,10 @@ const AdForm = () => {
 					sx={{ display: "flex", justifyContent: "center" }}
 				>
 					<Button
+						disableElevation
 						onClick={submitForm}
 						fullWidth
+						size='large'
 						variant='contained'
 						sx={{
 							backgroundColor: "#26D86E",
