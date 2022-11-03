@@ -1,36 +1,22 @@
-import {
-	Button,
-	Card,
-	CardActionArea,
-	CardMedia,
-	Stack,
-	Typography,
-} from "@mui/material"
-import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { getAds, reset } from "../../redux/ad/AdSlice"
-import Loading from "../../components/Loading"
+import { Button, Card, CardMedia, Stack, Typography } from "@mui/material"
+
 import { Box } from "@mui/system"
+import { useDispatch } from "react-redux"
 
-const PersonalCard = ({ ad, user }) => {
-	const dispatch = useDispatch()
-	const { ads } = useSelector((state) => state.ads)
-
-	useEffect(() => {
-		dispatch(getAds())
-	}, [dispatch])
-
-	console.log(ads[1], user)
-
+const PersonalCard = ({ ad, onClickAd }) => {
 	return (
 		<>
-			<Card sx={{ marginBottom: "1rem" }}>
-				<Stack direction='row' spacing={2} sx={{ margin: 1 }}>
+			<Card sx={{ padding: ".5rem" }}>
+				<Stack direction='row' spacing={3} sx={{ margin: 1 }}>
 					<CardMedia
 						component='img'
-						image={ads[1].img}
+						image={ad.img}
 						alt='green iguana'
-						sx={{ width: "10rem", borderRadius: "4px" }}
+						sx={{
+							width: "10rem",
+							borderRadius: "4px",
+							height: "6.5rem",
+						}}
 					/>
 					<Box sx={{ paddingTop: 1 }}>
 						<Typography
@@ -50,12 +36,13 @@ const PersonalCard = ({ ad, user }) => {
 								letterSpacing: -0.8,
 							}}
 						>
-							Bäst före : {ad.date}
+							Bäst före : {ad.date.substring(0, 10)}
 						</Typography>
 						<Stack direction='row' spacing={1} marginTop={2}>
 							<Button
 								disableElevation
 								variant='contained'
+								onClick={onClickAd}
 								sx={{
 									fontSize: "12px",
 									padding: "5px",

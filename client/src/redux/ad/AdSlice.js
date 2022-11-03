@@ -68,6 +68,26 @@ export const getSpecificAd = createAsyncThunk(
 		}
 	}
 )
+//Fetch specific ad
+export const deleteAd = createAsyncThunk(
+	"ads/deleteAd",
+	async (adId, thunkAPI) => {
+		try {
+			const token = thunkAPI.getState().auth.user.token
+			return await adService.deleteAd(adId, token)
+		} catch (error) {
+			// set the message to the backend server message
+			const message =
+				(error.response &&
+					error.response.data &&
+					error.response.data.message) ||
+				error.message ||
+				error.toString()
+			//return with the message
+			return thunkAPI.rejectWithValue(message)
+		}
+	}
+)
 
 export const adSlice = createSlice({
 	name: "ad",

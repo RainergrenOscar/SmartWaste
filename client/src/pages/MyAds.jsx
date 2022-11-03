@@ -7,7 +7,7 @@ import { getAds, reset } from "../redux/ad/AdSlice"
 import Loading from "../components/Loading"
 import { Container } from "@mui/system"
 import PersonalCard from "../components/card/PersonalCard"
-import { Grid } from "@mui/material"
+import { Box, Grid } from "@mui/material"
 
 const MyAds = () => {
 	useEffect(() => {
@@ -22,7 +22,6 @@ const MyAds = () => {
 	const { user, isLoading, isError, isSuccess } = useSelector(
 		(state) => state.auth
 	)
-
 	const { ads } = useSelector((state) => state.ads)
 
 	useEffect(() => {
@@ -54,9 +53,24 @@ const MyAds = () => {
 				url='/profile'
 			/>
 			<Container sx={{ marginTop: "6rem" }}>
-				{ads.map((ad) => (
-					<PersonalCard ad={ad} user={user} key={ad._id} />
-				))}
+				<Grid container rowSpacing={1} columnSpacing={2}>
+					{ads.map((ad) => {
+						if (user._id === ad.user) {
+							return (
+								<Grid item xs={12} sm={12} md={6}>
+									<article id={ad._id} key={ad._id}>
+										<PersonalCard
+											ad={ad}
+											user={user}
+											key={ad._id}
+											onClickAd={onClickAd}
+										/>
+									</article>
+								</Grid>
+							)
+						}
+					})}
+				</Grid>
 			</Container>
 		</>
 	)

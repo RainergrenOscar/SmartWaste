@@ -34,7 +34,7 @@ const getAds = async (token) => {
 		},
 	}
 	const response = await axios.get(url, config)
-	console.log(response.data)
+
 	return response.data
 }
 
@@ -55,11 +55,29 @@ const getSpecificAd = async (adId, token) => {
 	return response.data
 }
 
+/**
+ * Delete Ad
+ * @async
+ * @param {token, id}
+ * @returns Find ad by id
+ */
+const deleteAd = async (adId, token) => {
+	const config = {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	}
+	const response = await axios.delete(url + "/" + adId, config)
+
+	return response.data
+}
+
 //Exports
 const adService = {
 	createAd,
 	getAds,
 	getSpecificAd,
+	deleteAd,
 }
 
 export default adService
