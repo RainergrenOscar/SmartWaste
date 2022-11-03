@@ -51,7 +51,7 @@ const getSpecificAd = async (adId, token) => {
 		},
 	}
 	const response = await axios.get(url + "/" + adId, config)
-	console.log(response.data)
+
 	return response.data
 }
 

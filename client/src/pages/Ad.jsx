@@ -1,34 +1,29 @@
-import React, { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { Box } from "@mui/material"
+import React from "react"
 import SpecificAd from "../components/card/SpecificAd"
-import { useDispatch, useSelector } from "react-redux"
-import { getSpecificAd, reset } from "../redux/ad/AdSlice"
-import Loading from "../components/Loading"
+import Header from "../components/Header"
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
+import { Link } from "react-router-dom"
 
 const Ad = () => {
-	const params = useParams()
-	const dispatch = useDispatch()
-	const { ad, isLoading, isSuccess, isError, message } = useSelector(
-		(state) => state.ads
+	return (
+		<>
+			<Header
+				pageName='Annonser'
+				button={true}
+				icon={<ArrowBackIosIcon />}
+				url='/'
+			/>
+			<Box
+				sx={{
+					marginTop: { xs: "4rem", md: "6rem" },
+					marginBottom: "6rem",
+				}}
+			>
+				<SpecificAd />
+			</Box>
+		</>
 	)
-	const { adId } = useParams()
-
-	useEffect(() => {
-		if (isError) {
-			console.log(message)
-		}
-		dispatch(getSpecificAd(adId))
-	}, [isError, getSpecificAd, adId])
-
-	if (isLoading) {
-		return <Loading />
-	}
-
-	if (isError) {
-		return <h3>Ooops.... Något blev fel</h3>
-	}
-
-	return <div className='blog-details'>{ad.user.name}</div>
 }
 
 export default Ad

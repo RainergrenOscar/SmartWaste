@@ -120,7 +120,7 @@ const Login = () => {
 							>
 								Logga in
 							</Button>
-							<Link href='/login' variant='body2'>
+							<Link href='/signup' variant='body2'>
 								{"Har du inte ett konto? Registrera dig"}
 							</Link>
 						</Box>

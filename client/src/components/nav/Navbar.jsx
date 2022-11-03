@@ -12,7 +12,7 @@ import PersonIcon from "@mui/icons-material/Person"
 const Navbar = () => {
 	return (
 		<AppBar
-			position='static'
+			position='fixed'
 			sx={{
 				backgroundColor: "white",
 				marginBottom: "2rem",

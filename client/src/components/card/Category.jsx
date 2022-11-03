@@ -8,14 +8,13 @@ import fish from "../../resources/fish.svg"
 
 const Category = () => {
 	return (
-		<>
+		<Container sx={{}}>
 			<Box marginTop={2} marginBottom={2}>
 				<Typography
 					gutterBottom
 					component='div'
 					color='black'
 					sx={{
-						marginLeft: "1rem",
 						fontWeight: 500,
 						letterSpacing: -0.5,
 					}}
@@ -26,7 +25,6 @@ const Category = () => {
 					<div className='card'>
 						<Box
 							sx={{
-								marginLeft: "1rem",
 								marginRight: "1rem",
 							}}
 						>
@@ -55,7 +53,7 @@ const Category = () => {
 					</div>
 				</div>
 			</Box>
-		</>
+		</Container>
 	)
 }
 

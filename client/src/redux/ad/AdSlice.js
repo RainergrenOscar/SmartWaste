@@ -6,7 +6,7 @@ const initialState = {
 	ad: {},
 	isError: false,
 	isSuccess: false,
-	isLoading: false,
+	isLoading: true,
 	message: "",
 }
 

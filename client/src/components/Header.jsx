@@ -9,8 +9,9 @@ import {
 } from "@mui/material"
 import SearchIcon from "@mui/icons-material/Search"
 import React from "react"
+import { Link } from "react-router-dom"
 
-const Header = ({ pageName, icon, button, searchBar, searchHandler }) => {
+const Header = ({ pageName, icon, button, searchBar, searchHandler, url }) => {
 	return (
 		<Box
 			sx={{
@@ -60,7 +61,9 @@ const Header = ({ pageName, icon, button, searchBar, searchHandler }) => {
 				) : null}
 				{button ? (
 					<Box display={"flex"}>
-						<IconButton size='small'>{icon}</IconButton>
+						<Link to={url}>
+							<IconButton size='small'>{icon}</IconButton>
+						</Link>
 					</Box>
 				) : null}
 				<Typography

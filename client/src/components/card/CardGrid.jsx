@@ -1,7 +1,6 @@
 import {
 	Box,
 	Button,
-	ButtonBase,
 	Card,
 	CardActionArea,
 	CardContent,
@@ -10,14 +9,13 @@ import {
 	Divider,
 	Grid,
 	InputAdornment,
-	MenuItem,
 	Paper,
 	TextField,
 	Typography,
 } from "@mui/material"
 import SearchIcon from "@mui/icons-material/Search"
 import React from "react"
-import SmallCard from "./SmallCard"
+
 import LocationOnIcon from "@mui/icons-material/LocationOn"
 //redux
 import { getAds, reset } from "../../redux/ad/AdSlice"
@@ -53,7 +51,10 @@ const CardGrid = () => {
 	}
 
 	const filteredAds = ads.filter((ad) => {
-		return ad.category.toLowerCase().includes(search.toLowerCase())
+		return (
+			ad.title.toLowerCase().includes(search.toLowerCase()) ||
+			ad.location.toLowerCase().includes(search.toLowerCase())
+		)
 	})
 
 	const onClickAd = (e) => {
@@ -76,6 +77,7 @@ const CardGrid = () => {
 					<Paper
 						sx={{
 							height: "8.5rem",
+							width: { md: "30rem" },
 							padding: "0.8rem",
 						}}
 					>
@@ -104,8 +106,8 @@ const CardGrid = () => {
 							Vi minskar matsvinnet!
 						</Typography>
 						{/* Searchbar */}
-						<Grid container rowSpacing={1} columnSpacing={2}>
-							<Grid item xs={12} md={12}>
+						<Grid container rowSpacing={1} columnSpacing={1}>
+							<Grid item xs={9} md={10}>
 								<TextField
 									placeholder='Vad är du sugen på?'
 									fullWidth
@@ -118,6 +120,16 @@ const CardGrid = () => {
 										),
 									}}
 								/>
+							</Grid>
+							<Grid item xs={2} md={2}>
+								<Button
+									variant='contained'
+									fullWidth
+									disableElevation
+									sx={{ height: "100%" }}
+								>
+									SÖK
+								</Button>
 							</Grid>
 						</Grid>
 					</Paper>
@@ -147,8 +159,6 @@ const CardGrid = () => {
 								display: {
 									xs: "block",
 									sm: "block",
-									md: "none",
-									lg: "none",
 								},
 							}}
 						>
@@ -175,7 +185,7 @@ const CardGrid = () => {
 												letterSpacing: -0.8,
 											}}
 										>
-											{ad.title.substring(0, 15)}...
+											{ad.title}
 										</Typography>
 										<Typography
 											variant='body2'

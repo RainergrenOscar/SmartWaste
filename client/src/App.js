@@ -20,6 +20,8 @@ import Header from "./components/Header"
 
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew"
 import Ad from "./pages/Ad"
+import { useEffect } from "react"
+import MyAds from "./pages/MyAds"
 
 function App() {
 	const { user } = useSelector((state) => state.auth)
@@ -42,6 +44,14 @@ function App() {
 					element={
 						<PrivateRoute>
 							<CreateAd />
+						</PrivateRoute>
+					}
+				/>
+				<Route
+					path='/myAds'
+					element={
+						<PrivateRoute>
+							<MyAds />
 						</PrivateRoute>
 					}
 				/>
