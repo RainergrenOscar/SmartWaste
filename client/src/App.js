@@ -22,6 +22,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew"
 import Ad from "./pages/Ad"
 import { useEffect } from "react"
 import MyAds from "./pages/MyAds"
+import EditProfile from "./pages/EditProfile"
 
 function App() {
 	const { user } = useSelector((state) => state.auth)
@@ -52,6 +53,14 @@ function App() {
 					element={
 						<PrivateRoute>
 							<MyAds />
+						</PrivateRoute>
+					}
+				/>
+				<Route
+					path='/editprofile'
+					element={
+						<PrivateRoute>
+							<EditProfile />
 						</PrivateRoute>
 					}
 				/>

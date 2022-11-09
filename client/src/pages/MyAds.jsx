@@ -3,13 +3,17 @@ import Header from "../components/Header"
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
 import { useNavigate } from "react-router"
 import { useDispatch, useSelector } from "react-redux"
-import { getAds, reset } from "../redux/ad/AdSlice"
+import { deleteAd, getAds, reset } from "../redux/ad/AdSlice"
 import Loading from "../components/Loading"
 import { Container } from "@mui/system"
 import PersonalCard from "../components/card/PersonalCard"
 import { Box, Grid } from "@mui/material"
+import Popup from "../components/Popup"
 
 const MyAds = () => {
+	const [open, setOpen] = useState(false)
+	const handleOpen = () => setOpen(true)
+	const handleClose = () => setOpen(false)
 	useEffect(() => {
 		// 👇️ scroll to top on page load
 		window.scrollTo({ top: 0, left: 0 })
@@ -40,9 +44,16 @@ const MyAds = () => {
 		return <Loading />
 	}
 
-	const onClickAd = (e) => {
+	const showAd = (e) => {
 		navigate(`/ad/${e.target.closest("article").id}`)
 	}
+
+	const deletedAd = (ad) => {
+		dispatch(deleteAd(ad))
+		window.location.reload(false)
+	}
+
+	//Popup
 
 	return (
 		<>
@@ -63,9 +74,15 @@ const MyAds = () => {
 											ad={ad}
 											user={user}
 											key={ad._id}
-											onClickAd={onClickAd}
+											showAd={showAd}
+											deletedAd={handleOpen}
 										/>
 									</article>
+									<Popup
+										open={open}
+										handleClose={handleClose}
+										send={() => deletedAd(ad._id)}
+									/>
 								</Grid>
 							)
 						}

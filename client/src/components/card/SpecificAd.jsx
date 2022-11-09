@@ -8,6 +8,7 @@ import {
 	Button,
 	Container,
 	Divider,
+	Link,
 	ListItem,
 	Stack,
 	Typography,
@@ -38,7 +39,6 @@ const SpecificAd = () => {
 	if (isError) {
 		return <h3>Ooops.... Något blev fel</h3>
 	}
-	console.log(ad)
 
 	return (
 		<>

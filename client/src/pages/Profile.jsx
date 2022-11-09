@@ -16,6 +16,7 @@ import pen from "../resources/pen.svg"
 
 import ModeOutlinedIcon from "@mui/icons-material/ModeOutlined"
 import { logout, reset } from "../redux/auth/authSlice"
+import Confirm from "../components/Popup"
 
 const Profile = () => {
 	const dispatch = useDispatch()
@@ -118,6 +119,7 @@ const Profile = () => {
 					</Grid>
 					<Grid item xs={6}>
 						<SettingsCard
+							to='editprofile'
 							title='Redigera profil'
 							lgInfo='Se och hantera din profil '
 							icon={<img src={pen} width='35px' />}

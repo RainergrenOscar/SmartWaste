@@ -1,13 +1,5 @@
-import {
-	Box,
-	Container,
-	IconButton,
-	Input,
-	InputAdornment,
-	TextField,
-	Typography,
-} from "@mui/material"
-import SearchIcon from "@mui/icons-material/Search"
+import { Box, Container, IconButton, Typography } from "@mui/material"
+
 import React from "react"
 import { Link } from "react-router-dom"
 
@@ -17,7 +9,7 @@ const Header = ({ pageName, icon, button, searchBar, searchHandler, url }) => {
 			sx={{
 				boxShadow: 3,
 				position: "fixed",
-				zIndex: "9999",
+				zIndex: "9998",
 				top: 0,
 				height: "4rem",
 				left: 0,
@@ -39,26 +31,6 @@ const Header = ({ pageName, icon, button, searchBar, searchHandler, url }) => {
 					paddingRight: "1rem",
 				}}
 			>
-				{searchBar ? (
-					<TextField
-						className='inputRounded'
-						placeholder='Search'
-						variant='outlined'
-						size='small'
-						onChange={searchHandler}
-						fullWidth
-						sx={{
-							"& fieldset": { border: "none" },
-						}}
-						InputProps={{
-							startAdornment: (
-								<InputAdornment position='start'>
-									<SearchIcon />
-								</InputAdornment>
-							),
-						}}
-					/>
-				) : null}
 				{button ? (
 					<Box display={"flex"}>
 						<Link to={url}>

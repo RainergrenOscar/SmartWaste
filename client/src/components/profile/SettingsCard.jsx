@@ -1,14 +1,4 @@
-import {
-	Box,
-	Card,
-	Container,
-	Grid,
-	Link,
-	Paper,
-	Stack,
-	Typography,
-} from "@mui/material"
-import LocationOnIcon from "@mui/icons-material/LocationOn"
+import { Box, Link, Typography } from "@mui/material"
 import React from "react"
 
 const SettingsCard = ({ title, lgInfo, icon, to }) => {

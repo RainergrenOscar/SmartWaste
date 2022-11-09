@@ -1,9 +1,12 @@
 import { Button, Card, CardMedia, Stack, Typography } from "@mui/material"
 
 import { Box } from "@mui/system"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { deleteAd } from "../../redux/ad/AdSlice"
 
-const PersonalCard = ({ ad, onClickAd }) => {
+const PersonalCard = ({ ad, showAd, deletedAd }) => {
+	const dispatch = useDispatch()
+
 	return (
 		<>
 			<Card sx={{ padding: ".5rem" }}>
@@ -42,7 +45,7 @@ const PersonalCard = ({ ad, onClickAd }) => {
 							<Button
 								disableElevation
 								variant='contained'
-								onClick={onClickAd}
+								onClick={showAd}
 								sx={{
 									fontSize: "12px",
 									padding: "5px",
@@ -54,6 +57,7 @@ const PersonalCard = ({ ad, onClickAd }) => {
 								disableElevation
 								variant='contained'
 								color='error'
+								onClick={deletedAd}
 								sx={{
 									fontSize: "12px",
 									padding: "5px",
