@@ -1,11 +1,14 @@
 import { Box } from "@mui/material"
-import React from "react"
+import React, { useEffect } from "react"
 import SpecificAd from "../components/card/SpecificAd"
 import Header from "../components/Header"
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
-import { Link } from "react-router-dom"
 
 const Ad = () => {
+	useEffect(() => {
+		// 👇️ scroll to top on page load
+		window.scrollTo({ top: 0, left: 0 })
+	}, [])
 	return (
 		<>
 			<Header

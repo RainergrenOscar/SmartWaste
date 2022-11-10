@@ -1,8 +1,10 @@
 import { Box, Container, Grid } from "@mui/material"
 import React, { useEffect, useState } from "react"
 import CardGrid from "../components/card/CardGrid"
+import Category from "../components/card/Category"
 
 import Header from "../components/Header"
+import Searchbar from "../components/Searchbar"
 
 const Landing = () => {
 	useEffect(() => {

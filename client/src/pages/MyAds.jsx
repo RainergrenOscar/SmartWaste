@@ -75,7 +75,7 @@ const MyAds = () => {
 											user={user}
 											key={ad._id}
 											showAd={showAd}
-											deletedAd={handleOpen}
+											deletedAd={() => deletedAd(ad._id)}
 										/>
 									</article>
 									<Popup

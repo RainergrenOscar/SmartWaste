@@ -32,7 +32,10 @@ const Category = () => {
 						</Box>
 					</div>
 					<div className='card'>
-						<Box sx={{ marginRight: "1rem" }}>
+						<Box
+							sx={{ marginRight: "1rem" }}
+							onClick={() => console.log("hello")}
+						>
 							<img src={vego} alt='' />
 						</Box>
 					</div>
