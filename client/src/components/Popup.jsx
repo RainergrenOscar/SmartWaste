@@ -55,7 +55,7 @@ const Popup = ({ send, open, handleClose }) => {
 							fontWeight: 400,
 						}}
 					>
-						Är du säker?
+						Annonsen är raderad
 					</Typography>
 					<Typography
 						gutterBottom

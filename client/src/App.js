@@ -49,7 +49,7 @@ function App() {
 					}
 				/>
 				<Route
-					path='/myAds'
+					path='/profile/myAds'
 					element={
 						<PrivateRoute>
 							<MyAds />
@@ -57,7 +57,7 @@ function App() {
 					}
 				/>
 				<Route
-					path='/editprofile'
+					path='/profile/editprofile'
 					element={
 						<PrivateRoute>
 							<EditProfile />

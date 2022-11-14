@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material"
+import { Box, Container, Stack, Typography } from "@mui/material"
 
 import React from "react"
 
@@ -14,13 +14,46 @@ import Searchbar from "../Searchbar"
 import SmallCard from "./SmallCard"
 import sad from "../../resources/sad.svg"
 
+//Category images
+
+import meat from "../../resources/meat.svg"
+import vego from "../../resources/vego.svg"
+import fish from "../../resources/fish.svg"
+import chicken from "../../resources/kyckling.svg"
+import vegan from "../../resources/vegan.svg"
+
 const CardGrid = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const [search, setSearch] = useState("")
+	const [item, setItem] = useState(null)
+	const [category, setCategory] = useState("")
 	const { ads, isSuccess, isError, isLoading } = useSelector(
 		(state) => state.ads
 	)
+
+	const menuItems = [
+		{
+			value: "Kött",
+			image: meat,
+		},
+		{
+			value: "Vegetariskt",
+			image: vego,
+		},
+		{
+			value: "Fisk",
+			image: fish,
+		},
+		{
+			value: "Kyckling",
+			image: chicken,
+		},
+		{
+			value: "Veganskt",
+			image: vegan,
+		},
+	]
 
 	useEffect(() => {
 		return () => {
@@ -32,6 +65,7 @@ const CardGrid = () => {
 
 	useEffect(() => {
 		dispatch(getAds())
+		setItem(ads)
 	}, [dispatch])
 
 	if (isLoading) {
@@ -45,30 +79,64 @@ const CardGrid = () => {
 		)
 	})
 
+	const filterItem = (item) => {
+		const newItem = ads.filter((newVal) => {
+			return newVal.category === item
+		})
+		setCategory(item)
+		setItem(newItem)
+	}
+
 	return (
 		<>
 			{/* Searchfield */}
 			<Searchbar setSearch={setSearch} />
 			{/* Category list */}
-			<Category />
+			<Category
+				menuItems={menuItems}
+				filterItem={filterItem}
+				setItem={setItem}
+				ads={ads}
+			/>
 			{/* Card grid */}
 			<Container>
-				<Typography
-					gutterBottom
-					component='div'
-					sx={{
-						marginBottom: 1,
-						fontWeight: 500,
+				{category === "" ? (
+					<Typography
+						gutterBottom
+						component='div'
+						sx={{
+							marginBottom: 1,
+							fontWeight: 500,
 
-						letterSpacing: -0.8,
-					}}
-				>
-					Trött på det gamla vanliga?
-				</Typography>
+							letterSpacing: -0.8,
+						}}
+					>
+						Trött på det gamla vanliga
+					</Typography>
+				) : (
+					<Typography
+						gutterBottom
+						component='div'
+						sx={{
+							marginBottom: 1,
+							fontWeight: 500,
+
+							letterSpacing: -0.8,
+						}}
+					>
+						Alltid gott med {category}
+					</Typography>
+				)}
+
 				<Box className='auto-grid'>
 					{filteredAds.map((ad, i) => (
 						<SmallCard ad={ad} key={i} />
 					))}
+					{/* {item?.length !== 0
+						? item?.map((ad, i) => <SmallCard ad={ad} key={i} />)
+						: filteredAds.map((ad, i) => (
+								<SmallCard ad={ad} key={i} />
+						  ))} */}
 				</Box>
 				{filteredAds.length === 0 && (
 					<Box
@@ -77,7 +145,12 @@ const CardGrid = () => {
 							justifyContent: "center",
 						}}
 					>
-						<img src={sad} width='100px' alt='' />
+						<Stack>
+							<img src={sad} width='150px' alt='' />
+							<Typography textAlign={"center"}>
+								Inga annonser
+							</Typography>
+						</Stack>
 					</Box>
 				)}
 			</Container>

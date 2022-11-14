@@ -111,7 +111,7 @@ const Profile = () => {
 				<Grid container rowSpacing={2} columnSpacing={2}>
 					<Grid item xs={6}>
 						<SettingsCard
-							to='/myAds'
+							to='myAds'
 							title='Mina annonser'
 							lgInfo='Se och hantera dina annonser'
 							icon={<img src={pen} width='35px' />}

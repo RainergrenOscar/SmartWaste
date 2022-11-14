@@ -1,12 +1,9 @@
-import { Box, Card, Paper, Stack, Typography } from "@mui/material"
+import { Box, Button, Card, Paper, Stack, Typography } from "@mui/material"
 import { Container } from "@mui/system"
 import React, { useState } from "react"
-import meat from "../../resources/meat.svg"
-import vego from "../../resources/vego.svg"
-import cheap from "../../resources/cheap.svg"
-import fish from "../../resources/fish.svg"
+import allt from "../../resources/allt.svg"
 
-const Category = () => {
+const Category = ({ filterItem, setItem, menuItems, ads }) => {
 	return (
 		<Container sx={{}}>
 			<Box marginTop={2} marginBottom={2}>
@@ -24,36 +21,28 @@ const Category = () => {
 				<div className='scroll-wrap'>
 					<div className='card'>
 						<Box
+							onClick={() => setItem(ads)}
 							sx={{
-								marginRight: "1rem",
+								marginRight: "0.5rem",
+								cursor: "pointer",
 							}}
 						>
-							<img src={meat} alt='' />
+							<img src={allt} alt='' />
 						</Box>
 					</div>
-					<div className='card'>
-						<Box
-							sx={{ marginRight: "1rem" }}
-							onClick={() => console.log("hello")}
-						>
-							<img src={vego} alt='' />
-						</Box>
-					</div>
-					<div className='card'>
-						<Box sx={{ marginRight: "1rem" }}>
-							<img src={fish} alt='' />
-						</Box>
-					</div>
-					<div className='card'>
-						<Box sx={{ marginRight: "1rem" }}>
-							<img src={cheap} alt='' />
-						</Box>
-					</div>
-					<div className='card'>
-						<Box sx={{ marginRight: "1rem" }}>
-							<img src={meat} alt='' />
-						</Box>
-					</div>
+					{menuItems.map((Val, id) => (
+						<div className='card' key={id}>
+							<Box
+								onClick={() => filterItem(Val.value)}
+								sx={{
+									marginRight: "0.5rem",
+									cursor: "pointer",
+								}}
+							>
+								<img src={Val.image} alt='' />
+							</Box>
+						</div>
+					))}
 				</div>
 			</Box>
 		</Container>

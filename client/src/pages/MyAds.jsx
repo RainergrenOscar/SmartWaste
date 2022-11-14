@@ -50,7 +50,12 @@ const MyAds = () => {
 
 	const deletedAd = (ad) => {
 		dispatch(deleteAd(ad))
-		window.location.reload(false)
+		handleOpen()
+	}
+
+	const handleDelete = () => {
+		handleClose()
+		window.location.reload()
 	}
 
 	//Popup
@@ -63,13 +68,13 @@ const MyAds = () => {
 				icon={<ArrowBackIosIcon />}
 				url='/profile'
 			/>
-			<Container sx={{ marginTop: "6rem" }}>
+			<Container sx={{ marginTop: "6rem", marginBottom: "6rem" }}>
 				<Grid container rowSpacing={1} columnSpacing={2}>
 					{ads.map((ad) => {
 						if (user._id === ad.user) {
 							return (
-								<Grid item xs={12} sm={12} md={6}>
-									<article id={ad._id} key={ad._id}>
+								<Grid item xs={12} sm={12} md={6} key={ad._id}>
+									<article id={ad._id}>
 										<PersonalCard
 											ad={ad}
 											user={user}
@@ -81,7 +86,7 @@ const MyAds = () => {
 									<Popup
 										open={open}
 										handleClose={handleClose}
-										send={() => deletedAd(ad._id)}
+										send={handleDelete}
 									/>
 								</Grid>
 							)

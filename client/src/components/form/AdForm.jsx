@@ -290,6 +290,8 @@ const AdForm = () => {
 						<MenuItem value='Kött'>Kött</MenuItem>
 						<MenuItem value='Vegetariskt'>Vegetariskt</MenuItem>
 						<MenuItem value='Fisk'>Fisk / Skaldjur</MenuItem>
+						<MenuItem value='Kyckling'>Kyckling</MenuItem>
+						<MenuItem value='Veganskt'>Veganskt</MenuItem>
 					</TextField>
 				</Grid>
 

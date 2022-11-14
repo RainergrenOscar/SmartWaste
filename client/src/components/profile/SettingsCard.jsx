@@ -1,9 +1,10 @@
-import { Box, Link, Typography } from "@mui/material"
+import { Box, Typography } from "@mui/material"
+import { Link } from "react-router-dom"
 import React from "react"
 
 const SettingsCard = ({ title, lgInfo, icon, to }) => {
 	return (
-		<Link href={to} underline='none'>
+		<Link to={to} style={{ textDecoration: "none" }}>
 			<Box
 				sx={{
 					paddingLeft: "16px",
