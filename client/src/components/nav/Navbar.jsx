@@ -7,7 +7,6 @@ import {
 	Container,
 } from "@mui/material"
 import { Link } from "react-router-dom"
-import PersonIcon from "@mui/icons-material/Person"
 
 const Navbar = () => {
 	return (

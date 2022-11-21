@@ -13,10 +13,12 @@ import Loading from "../components/Loading"
 
 import SettingsCard from "../components/profile/SettingsCard"
 import pen from "../resources/pen.svg"
+import settings from "../resources/settings.svg"
+import profile from "../resources/profile.svg"
 
 import ModeOutlinedIcon from "@mui/icons-material/ModeOutlined"
 import { logout, reset } from "../redux/auth/authSlice"
-import Confirm from "../components/Popup"
+import { Link } from "react-router-dom"
 
 const Profile = () => {
 	const dispatch = useDispatch()
@@ -82,18 +84,20 @@ const Profile = () => {
 					</Stack>
 				</div>
 				<Stack direction='row'>
-					<Button
-						variant='contained'
-						disableElevation
-						size='medium'
-						sx={{
-							marginTop: "2rem",
-							marginRight: "1rem",
-						}}
-						startIcon={<ModeOutlinedIcon />}
-					>
-						Redigera profil
-					</Button>
+					<Link to='editprofile' style={{ textDecoration: "none" }}>
+						<Button
+							variant='contained'
+							disableElevation
+							size='medium'
+							sx={{
+								marginTop: "2rem",
+								marginRight: "1rem",
+							}}
+							startIcon={<ModeOutlinedIcon />}
+						>
+							Redigera profil
+						</Button>
+					</Link>
 					<Button
 						variant='contained'
 						onClick={onLogout}
@@ -114,7 +118,13 @@ const Profile = () => {
 							to='myAds'
 							title='Mina annonser'
 							lgInfo='Se och hantera dina annonser'
-							icon={<img src={pen} width='35px' />}
+							icon={
+								<img
+									src={pen}
+									width='35px'
+									alt='Mina annonser'
+								/>
+							}
 						/>
 					</Grid>
 					<Grid item xs={6}>
@@ -122,14 +132,27 @@ const Profile = () => {
 							to='editprofile'
 							title='Redigera profil'
 							lgInfo='Se och hantera din profil '
-							icon={<img src={pen} width='35px' />}
+							icon={
+								<img
+									src={profile}
+									width='35px'
+									alt='Redigera profil'
+								/>
+							}
 						/>
 					</Grid>
 					<Grid item xs={6}>
 						<SettingsCard
+							to='settings'
 							title='Inställningar'
 							lgInfo='Se och hantera din profil '
-							icon={<img src={pen} width='35px' />}
+							icon={
+								<img
+									src={settings}
+									width='35px'
+									alt='Inställningar'
+								/>
+							}
 						/>
 					</Grid>
 				</Grid>

@@ -8,7 +8,6 @@ import {
 	Button,
 	Container,
 	Divider,
-	Link,
 	ListItem,
 	Stack,
 	Typography,
@@ -20,7 +19,7 @@ import Modal from "../Modal"
 const SpecificAd = () => {
 	const [displayModal, setDisplayModal] = useState(false)
 	const dispatch = useDispatch()
-	const { ad, isLoading, isSuccess, isError, message } = useSelector(
+	const { ad, isLoading, isError, message } = useSelector(
 		(state) => state.ads
 	)
 	const { adId } = useParams()

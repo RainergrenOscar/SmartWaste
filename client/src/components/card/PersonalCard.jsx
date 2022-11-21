@@ -1,12 +1,6 @@
-import { Button, Card, CardMedia, Stack, Typography } from "@mui/material"
-
-import { Box } from "@mui/system"
-import { useDispatch, useSelector } from "react-redux"
-import { deleteAd } from "../../redux/ad/AdSlice"
+import { Button, Card, CardMedia, Stack, Typography, Box } from "@mui/material"
 
 const PersonalCard = ({ ad, showAd, deletedAd }) => {
-	const dispatch = useDispatch()
-
 	return (
 		<>
 			<Card sx={{ padding: ".5rem" }}>

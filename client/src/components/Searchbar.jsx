@@ -1,12 +1,7 @@
 import {
 	Box,
 	Button,
-	Card,
-	CardActionArea,
-	CardContent,
-	CardMedia,
 	Container,
-	Divider,
 	Grid,
 	InputAdornment,
 	Paper,
@@ -61,7 +56,7 @@ const Searchbar = ({ setSearch }) => {
 					</Typography>
 					{/* Searchbar */}
 					<Grid container rowSpacing={1} columnSpacing={1}>
-						<Grid item xs={9} md={10}>
+						<Grid item xs={12} md={12}>
 							<TextField
 								placeholder='Vad är du sugen på?'
 								fullWidth
@@ -74,16 +69,6 @@ const Searchbar = ({ setSearch }) => {
 									),
 								}}
 							/>
-						</Grid>
-						<Grid item xs={2} md={2}>
-							<Button
-								variant='contained'
-								fullWidth
-								disableElevation
-								sx={{ height: "100%" }}
-							>
-								SÖK
-							</Button>
 						</Grid>
 					</Grid>
 				</Paper>

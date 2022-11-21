@@ -1,9 +1,7 @@
-import { Box, Button, Card, Paper, Stack, Typography } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { Container } from "@mui/system"
-import React, { useState } from "react"
-import allt from "../../resources/allt.svg"
 
-const Category = ({ filterItem, setItem, menuItems, ads }) => {
+const Category = ({ filterItem, menuItems }) => {
 	return (
 		<Container sx={{}}>
 			<Box marginTop={2} marginBottom={2}>
@@ -19,17 +17,6 @@ const Category = ({ filterItem, setItem, menuItems, ads }) => {
 					Vad är du sugen på?
 				</Typography>
 				<div className='scroll-wrap'>
-					<div className='card'>
-						<Box
-							onClick={() => setItem(ads)}
-							sx={{
-								marginRight: "0.5rem",
-								cursor: "pointer",
-							}}
-						>
-							<img src={allt} alt='' />
-						</Box>
-					</div>
 					{menuItems.map((Val, id) => (
 						<div className='card' key={id}>
 							<Box

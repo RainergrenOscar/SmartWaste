@@ -1,5 +1,4 @@
 import React from "react"
-import Header from "../Header"
 
 import BottomNav from "./BottomNav"
 import Navbar from "./Navbar"

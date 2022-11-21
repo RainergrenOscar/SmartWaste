@@ -1,10 +1,5 @@
 //Routing & Pages
-import {
-	BrowserRouter as Router,
-	Routes,
-	Route,
-	useParams,
-} from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Landing from "./pages/Landing"
@@ -15,14 +10,12 @@ import { useSelector } from "react-redux"
 import CreateAd from "./pages/CreateAd"
 import Profile from "./pages/Profile"
 import Nav from "./components/nav/Nav"
-import { Container } from "@mui/material"
-import Header from "./components/Header"
 
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew"
 import Ad from "./pages/Ad"
-import { useEffect } from "react"
-import MyAds from "./pages/MyAds"
-import EditProfile from "./pages/EditProfile"
+
+import MyAds from "./pages/profilePages/MyAds"
+import EditProfile from "./pages/profilePages/EditProfile"
+import Settings from "./pages/profilePages/Settings"
 
 function App() {
 	const { user } = useSelector((state) => state.auth)
@@ -49,6 +42,22 @@ function App() {
 					}
 				/>
 				<Route
+					path='/ad/:adId'
+					element={
+						<PrivateRoute>
+							<Ad />
+						</PrivateRoute>
+					}
+				/>
+				<Route
+					path='/profile'
+					element={
+						<PrivateRoute>
+							<Profile />
+						</PrivateRoute>
+					}
+				/>
+				<Route
 					path='/profile/myAds'
 					element={
 						<PrivateRoute>
@@ -65,18 +74,10 @@ function App() {
 					}
 				/>
 				<Route
-					path='/ad/:adId'
+					path='/profile/settings'
 					element={
 						<PrivateRoute>
-							<Ad />
-						</PrivateRoute>
-					}
-				/>
-				<Route
-					path='/profile'
-					element={
-						<PrivateRoute>
-							<Profile />
+							<Settings />
 						</PrivateRoute>
 					}
 				/>

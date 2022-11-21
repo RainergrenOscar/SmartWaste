@@ -174,6 +174,7 @@ const AdForm = () => {
 		} else {
 			dispatch(createAd(newObj))
 			navigate("/")
+			window.location.reload()
 		}
 	}
 

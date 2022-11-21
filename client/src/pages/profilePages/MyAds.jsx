@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react"
-import Header from "../components/Header"
+import Header from "../../components/Header"
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
 import { useNavigate } from "react-router"
 import { useDispatch, useSelector } from "react-redux"
-import { deleteAd, getAds, reset } from "../redux/ad/AdSlice"
-import Loading from "../components/Loading"
+import { deleteAd, getAds, reset } from "../../redux/ad/AdSlice"
+import Loading from "../../components/Loading"
 import { Container } from "@mui/system"
-import PersonalCard from "../components/card/PersonalCard"
+import PersonalCard from "../../components/card/PersonalCard"
 import { Box, Grid } from "@mui/material"
-import Popup from "../components/Popup"
+import Popup from "../../components/Popup"
 
 const MyAds = () => {
 	const [open, setOpen] = useState(false)
@@ -70,28 +70,37 @@ const MyAds = () => {
 			/>
 			<Container sx={{ marginTop: "6rem", marginBottom: "6rem" }}>
 				<Grid container rowSpacing={1} columnSpacing={2}>
-					{ads.map((ad) => {
-						if (user._id === ad.user) {
-							return (
-								<Grid item xs={12} sm={12} md={6} key={ad._id}>
-									<article id={ad._id}>
-										<PersonalCard
-											ad={ad}
-											user={user}
-											key={ad._id}
-											showAd={showAd}
-											deletedAd={() => deletedAd(ad._id)}
+					{ads &&
+						ads.map((ad, i) => {
+							if (user._id === ad.user) {
+								return (
+									<Grid
+										item
+										xs={12}
+										sm={12}
+										md={6}
+										key={ad._id}
+									>
+										<article id={ad._id}>
+											<PersonalCard
+												ad={ad}
+												user={user}
+												key={ad._id}
+												showAd={showAd}
+												deletedAd={() =>
+													deletedAd(ad._id)
+												}
+											/>
+										</article>
+										<Popup
+											open={open}
+											handleClose={handleClose}
+											send={handleDelete}
 										/>
-									</article>
-									<Popup
-										open={open}
-										handleClose={handleClose}
-										send={handleDelete}
-									/>
-								</Grid>
-							)
-						}
-					})}
+									</Grid>
+								)
+							}
+						})}
 				</Grid>
 			</Container>
 		</>
