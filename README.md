@@ -24,3 +24,7 @@ SmartWaste är en plattform där privatpersoner har möjlighet att köpa och sä
 - NodeJS
 
 - Express
+
+## Bild
+
+[![i-Phone-14-Pro.png](https://i.postimg.cc/nhXR2qZv/i-Phone-14-Pro.png)](https://postimg.cc/87VmPJ75)
