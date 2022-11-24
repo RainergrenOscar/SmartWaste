@@ -1,16 +1,15 @@
-import React, { useState } from "react"
 import {
 	Box,
 	Button,
 	FormControl,
 	FormControlLabel,
-	FormLabel,
 	Modal,
 	Radio,
 	RadioGroup,
 	Typography,
 } from "@mui/material"
 
+//Trying out MUI styled
 const style = {
 	position: "absolute",
 	top: "50%",

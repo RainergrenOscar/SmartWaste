@@ -1,4 +1,6 @@
-import React from "react"
+import { Link } from "react-router-dom"
+
+//MUI
 import {
 	AppBar,
 	Toolbar,
@@ -6,8 +8,8 @@ import {
 	Typography,
 	Container,
 } from "@mui/material"
-import { Link } from "react-router-dom"
 
+//Makin Navbar for larger screen sizes
 const Navbar = () => {
 	return (
 		<AppBar

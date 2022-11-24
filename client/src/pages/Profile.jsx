@@ -23,9 +23,7 @@ import { Link } from "react-router-dom"
 const Profile = () => {
 	const dispatch = useDispatch()
 
-	const { user, isLoading, isError, message } = useSelector(
-		(state) => state.auth
-	)
+	const { user, isLoading, isError } = useSelector((state) => state.auth)
 
 	if (isLoading) {
 		return <Loading />

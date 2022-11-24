@@ -29,54 +29,8 @@ const CardGrid = () => {
 	const [item, setItem] = useState(null)
 	const [category, setCategory] = useState("")
 
+	//Get ads state from redux
 	const { ads, isSuccess, isLoading } = useSelector((state) => state.ads)
-
-	//Category and Searchbar function
-	const filterItem = (item, isSearch) => {
-		let newItem = ads.filter((newVal) => {
-			return newVal.category === item
-		})
-		if (item === "Allt") {
-			newItem = ads
-		}
-		if (item === "test") {
-			newItem = ads.filter((newVal) => {
-				return newVal.price < 150
-			})
-		}
-		if (isSearch) {
-			let searchResult = newItem.filter((ad) => {
-				return (
-					ad.title.toLowerCase().includes(isSearch.toLowerCase()) ||
-					ad.location.toLowerCase().includes(isSearch.toLowerCase())
-				)
-			})
-			newItem = searchResult
-		}
-		setCategory(item)
-		setItem(newItem)
-	}
-
-	const handleSearch = (value) => {
-		setSearch(value)
-		filterItem(category, value)
-	}
-
-	useEffect(() => {
-		dispatch(getAds())
-	}, [dispatch])
-
-	useEffect(() => {
-		filterItem("Allt")
-	}, [ads])
-
-	useEffect(() => {
-		return () => {
-			if (isSuccess) {
-				dispatch(reset())
-			}
-		}
-	}, [dispatch, isSuccess])
 
 	const menuItems = [
 		{
@@ -104,11 +58,62 @@ const CardGrid = () => {
 			image: vegan,
 		},
 		{
-			value: "test",
+			value: "cheap",
 			image: cheapest,
 		},
 	]
 
+	//Category and Searchbar function
+	const filterItem = (item, isSearch) => {
+		let newItem = ads.filter((newVal) => {
+			return newVal.category === item
+		})
+		if (item === "Allt") {
+			newItem = ads
+		}
+		if (item === "cheap") {
+			newItem = ads.filter((newVal) => {
+				return newVal.price < 150
+			})
+		}
+		if (isSearch) {
+			let searchResult = newItem.filter((ad) => {
+				return (
+					ad.title.toLowerCase().includes(isSearch.toLowerCase()) ||
+					ad.location.toLowerCase().includes(isSearch.toLowerCase())
+				)
+			})
+			newItem = searchResult
+		}
+		setCategory(item)
+		setItem(newItem)
+	}
+	//Checks if searchbar is used
+	const handleSearch = (value) => {
+		setSearch(value)
+		filterItem(category, value)
+	}
+
+	//get ads state from redux
+	useEffect(() => {
+		dispatch(getAds())
+	}, [dispatch])
+
+	//Set starting category to all ads
+	useEffect(() => {
+		filterItem("Allt")
+	}, [ads])
+
+	//Check if everyting is succesfull and dispatch the reset reducer
+	useEffect(() => {
+		return () => {
+			if (isSuccess) {
+				dispatch(reset())
+			}
+		}
+	}, [dispatch, isSuccess])
+
+	//If ads is pending
 	if (isLoading) {
 		return <Loading />
 	}
@@ -142,7 +147,7 @@ const CardGrid = () => {
 					{category === "Fisk" && "Fisk är nyttigt!"}
 					{category === "Kyckling" && "Härliga recept med kyckling"}
 					{category === "Veganskt" && "Grönsaker för livet"}
-					{category === "test" && "Måltider för under 150kr"}
+					{category === "cheap" && "Måltider för under 150kr"}
 				</Typography>
 
 				<Box className='auto-grid'>

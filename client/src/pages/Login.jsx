@@ -57,6 +57,7 @@ const Login = () => {
 	//When form is submitted
 	const handleSubmit = (e) => {
 		e.preventDefault()
+
 		const userData = {
 			email,
 			password,

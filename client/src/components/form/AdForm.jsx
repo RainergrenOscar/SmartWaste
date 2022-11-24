@@ -178,8 +178,6 @@ const AdForm = () => {
 		}
 	}
 
-	//Submit form
-
 	return (
 		<form>
 			<Grid container rowSpacing={4} columnSpacing={2}>

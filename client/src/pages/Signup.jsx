@@ -18,6 +18,9 @@ import { useSelector, useDispatch } from "react-redux"
 import { register, reset } from "../redux/auth/authSlice"
 import Loading from "../components/Loading"
 
+//React toast
+import { toast } from "react-toastify"
+
 const Signup = () => {
 	const navigate = useNavigate()
 	//Redux
@@ -60,7 +63,7 @@ const Signup = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		if (password !== password2) {
-			console.log("dont match")
+			toast.error("Lösenorden matchar ej")
 		} else {
 			const userData = {
 				name,
@@ -68,7 +71,6 @@ const Signup = () => {
 				password,
 			}
 			dispatch(register(userData))
-			console.log()
 		}
 	}
 	return (

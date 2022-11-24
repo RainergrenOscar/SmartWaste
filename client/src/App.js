@@ -1,21 +1,25 @@
-//Routing & Pages
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+//Pages
+import Ad from "./pages/Ad"
+import MyAds from "./pages/profilePages/MyAds"
+import EditProfile from "./pages/profilePages/EditProfile"
+import Settings from "./pages/profilePages/Settings"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Landing from "./pages/Landing"
 import PrivateRoute from "./pages/PrivateRoute"
-
-//Redux
-import { useSelector } from "react-redux"
 import CreateAd from "./pages/CreateAd"
 import Profile from "./pages/Profile"
 import Nav from "./components/nav/Nav"
 
-import Ad from "./pages/Ad"
+//Routing & Pages
+import { Routes, Route } from "react-router-dom"
 
-import MyAds from "./pages/profilePages/MyAds"
-import EditProfile from "./pages/profilePages/EditProfile"
-import Settings from "./pages/profilePages/Settings"
+//Redux
+import { useSelector } from "react-redux"
+
+// React toastify npm
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function App() {
 	const { user } = useSelector((state) => state.auth)
@@ -85,6 +89,7 @@ function App() {
 				<Route path='/signup' element={<Signup />} />
 				<Route path='/login' element={<Login />} />
 			</Routes>
+			<ToastContainer />
 		</>
 	)
 }

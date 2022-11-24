@@ -7,12 +7,14 @@ import ControlPointIcon from "@mui/icons-material/ControlPoint"
 import SearchIcon from "@mui/icons-material/Search"
 import { BottomNavigation, BottomNavigationAction, Paper } from "@mui/material"
 
+//Makin Bottombar for smaller screen sizes
 const BottomNav = () => {
 	const pathname = window.location.pathname
 	const [value, setValue] = useState(pathname)
 	const handleChange = (event, newValue) => {
 		setValue(newValue)
 	}
+
 	return (
 		<>
 			<Paper

@@ -3,7 +3,7 @@ import { Box, Container, IconButton, Typography } from "@mui/material"
 import React from "react"
 import { Link } from "react-router-dom"
 
-const Header = ({ pageName, icon, button, searchBar, searchHandler, url }) => {
+const Header = ({ pageName, icon, button, url }) => {
 	return (
 		<Box
 			sx={{
